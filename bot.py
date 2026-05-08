@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 BOT_TOKEN          = os.environ.get("BOT_TOKEN")
 ANTHROPIC_API_KEY  = os.environ.get("ANTHROPIC_API_KEY")
+ANTHROPIC_BASE_URL = os.environ.get("ANTHROPIC_BASE_URL", "https://api.anthropic.com")
 
 # ══════════════════════════════════════════════════════════════════
 #  HELPERS
@@ -190,7 +191,7 @@ CATATAN:
 Jawab langsung tanpa preamble. Bahasa Indonesia."""
 
     resp = requests.post(
-        "https://api.anthropic.com/v1/messages",
+        f"{ANTHROPIC_BASE_URL}/v1/messages",
         headers={
             "x-api-key"         : ANTHROPIC_API_KEY,
             "anthropic-version" : "2023-06-01",
